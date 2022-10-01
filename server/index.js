@@ -3,6 +3,8 @@ const bodyParser = require("body-parser");
 const fetch = require("node-fetch");
 const path = require("path");
 const FormData = require("form-data");
+const jose = require('jose')
+
 require("dotenv").config();
 
 const app = express();
@@ -53,7 +55,11 @@ app.post("/authenticate", async (req, res) => {
       })
       .then((response) => response.json())
       .then((response) => {
-        response.token = access_token;
+        const token = new jose.CompactEncrypt(
+          access_token
+        )
+          .encrypt(process.env.SCRAMBLE)
+        response.token = token;
         return res.status(200).json(response);
       })
       .catch((error) => {
