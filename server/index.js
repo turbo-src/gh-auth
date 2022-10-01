@@ -59,6 +59,7 @@ app.post("/authenticate", async (req, res) => {
           access_token
         )
           .encrypt(process.env.SCRAMBLE)
+          console.log(token)
         response.token = token;
         return res.status(200).json(response);
       })
