@@ -1,6 +1,6 @@
-# fly.toml file generated for turbosrc-auth on 2022-08-31T16:15:01-04:00
+# fly.toml file generated for turbosrc-reibase-auth on 2022-11-03T11:25:42-04:00
 
-app = "turbosrc-auth"
+app = "turbosrc-reibase-auth"
 kill_signal = "SIGINT"
 kill_timeout = 5
 processes = []
