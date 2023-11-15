@@ -55,7 +55,9 @@ app.post("/authenticate", async (req, res) => {
       .then((response) => response.json())
       .then((response) => {
 
-        const token = jwt.sign({ githubToken: access_token }, process.env.JWT);
+        // add turboSrcToken: response.login
+        // hash their github name with secret. the dehash it with same secret on router
+        const token = jwt.sign({ githubToken: response.login }, process.env.JWT);
 
         response.token = token;
 
